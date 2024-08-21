@@ -8,4 +8,17 @@ API_KEY = os.getenv("API_KEY")
 url = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={API_KEY}"
 
 get = requests.get(url)
-content = get.text
+content = get.json()
+# print(content)
+# print(f"totalResults: {content['articles']}")
+article = content['articles'][0]
+
+info = f"""
+Title: {article['title']}
+Author: {article['author']}
+{f"Description: {article['description']}" if article['description'] else "No description :("}
+URL: {article['url']}
+"""
+
+print(info)
+
