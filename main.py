@@ -13,8 +13,12 @@ url = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey
 content = requests.get(url).json()
 message_to_send = """"""
 
+
+iteration = 0
 for news in content['articles']:
-	message_to_send += f"""
+	iteration += 1
+	if iteration < 10:
+		message_to_send += f"""
 <hr style="border: 1px solid black; margin: 25px 0px">
 
 <h3>
