@@ -9,16 +9,14 @@ url = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey
 
 get = requests.get(url)
 content = get.json()
-# print(content)
-# print(f"totalResults: {content['articles']}")
-article = content['articles'][0]
 
-info = f"""
-Title: {article['title']}
-Author: {article['author']}
-{f"Description: {article['description']}" if article['description'] else "No description :("}
-URL: {article['url']}
+for news in content['articles']:
+	info = f"""
+Title: {news['title'].split(" - ")[0]}
+Author: {news['author']}
+{f"Description: {news['description']}" if news['description'] else "No description :("}
+URL: {news['url']}
 """
-
-print(info)
+	print(info)
+	print(" ------------------------------------ ")
 
