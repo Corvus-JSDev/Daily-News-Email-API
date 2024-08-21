@@ -7,8 +7,8 @@ API_KEY = os.getenv("API_KEY")
 # Top business headlines in the US right now from newsapi.org
 url = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={API_KEY}"
 
-get = requests.get(url)
-content = get.json()
+# Get the data from the URL and jsonify it
+content = requests.get(url).json()
 
 for news in content['articles']:
 	info = f"""
